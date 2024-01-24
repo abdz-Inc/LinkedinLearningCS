@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Reflection;
+
 namespace LinkedinLearning.DelegatesEventsLambdas
 {
     public class Progam
@@ -8,6 +10,14 @@ namespace LinkedinLearning.DelegatesEventsLambdas
         public static void Listenbalance(object sender, MyEventArgs e)
         {
             Console.WriteLine("Your balance is : " + e.balance);
+        }
+
+        public static void ListenbalanceEvent(int balance)
+        {
+            if (balance >= 500.0m)
+            {
+                Console.WriteLine("You have reached your target " + balance);
+            }
         }
 
         public static void Listenbalancelimit(object sender, MyEventArgs e)
@@ -63,8 +73,16 @@ namespace LinkedinLearning.DelegatesEventsLambdas
             //BankEvent
 
             BankEvent bank = new BankEvent();
-            bank.BalanceChanged += delegate (object sender, MyEventArgs e) { Console.WriteLine("Your balance is : " + e.balance); };
-            bank.BalanceChanged += new EventHandler<MyEventArgs>(Listenbalancelimit);
+            //bank.BalanceChanged += delegate (object sender, MyEventArgs e) { Console.WriteLine("Your balance is : " + e.balance); };
+            //bank.BalanceChanged += new EventHandler<MyEventArgs>(ListenbalancelimitEvent);
+            //bank.BalanceChanged += delegate (int balance) { Console.WriteLine("Your balance is : " + balance); };
+            //bank.BalanceChanged += new BalanceEventHandler(ListenbalanceEvent);
+
+            bank.BalanceChanged += (balance) => { Console.WriteLine("Your balance is : " + balance); };
+            bank.BalanceChanged += (balance) => {
+                if (balance >= 500.0m) Console.WriteLine("You have reached your target : " + balance);
+            };
+
             int deposit;
             while (true)
             {
