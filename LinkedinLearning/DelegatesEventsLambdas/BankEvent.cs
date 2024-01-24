@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkedinLearning
+namespace LinkedinLearning.DelegatesEventsLambdas
 {
 
     public class MyEventArgs : EventArgs
@@ -16,13 +16,15 @@ namespace LinkedinLearning
     {
         private int _balance;
         private int _limit;
-        public event EventHandler<MyEventArgs> BalanceChanged = delegate {  };
+        public event EventHandler<MyEventArgs> BalanceChanged = delegate { };
 
 
-        public int Balance { 
+        public int Balance
+        {
             get { return _balance; }
-            set {
-                this._balance = value;
+            set
+            {
+                _balance = value;
                 BalanceChanged(this, new MyEventArgs()
                 {
                     balance = _balance
@@ -35,7 +37,7 @@ namespace LinkedinLearning
             get; set;
         }
 
-        public BankEvent(int balance=0, int limit = 500)
+        public BankEvent(int balance = 0, int limit = 500)
         {
             Balance = balance;
             Limit = limit;

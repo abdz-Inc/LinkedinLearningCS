@@ -1,14 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using LinkedinLearning;
-
-namespace Linked
+namespace LinkedinLearning.DelegatesEventsLambdas
 {
-    public class Progam {
+    public class Progam
+    {
         public delegate float shippingDelegate(int cost);
 
         public static void Listenbalance(object sender, MyEventArgs e)
         {
-            Console.WriteLine("Your balance is : "+e.balance);
+            Console.WriteLine("Your balance is : " + e.balance);
         }
 
         public static void Listenbalancelimit(object sender, MyEventArgs e)
@@ -19,7 +18,8 @@ namespace Linked
             }
         }
 
-        public static void Main(string[] args) {
+        public static void Main(string[] args)
+        {
 
             //shippingDelegates
 
@@ -80,6 +80,6 @@ namespace Linked
             }
 
         }
-}
+    }
 
 }

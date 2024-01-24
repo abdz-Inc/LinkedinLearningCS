@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkedinLearning
+namespace LinkedinLearning.DelegatesEventsLambdas
 {
     public class ShippingZones
     {
@@ -12,15 +12,16 @@ namespace LinkedinLearning
         private int _risk;
         private bool _highrisk;
 
-        public int Zonepercent{
+        public int Zonepercent
+        {
             get; set;
-            }
+        }
 
         public int Risk
         {
             get => _risk;
-            set=> _risk=value;
-            
+            set => _risk = value;
+
         }
 
         public bool Highrisk
@@ -38,7 +39,7 @@ namespace LinkedinLearning
 
         public float shippingcost(int cost)
         {
-            return Highrisk?Risk:0 + ((cost * Zonepercent) / 100);
+            return Highrisk ? Risk : 0 + cost * Zonepercent / 100;
         }
     }
 }
